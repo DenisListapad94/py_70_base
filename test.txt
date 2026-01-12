@@ -1,2 +1,3 @@
 help me learn GIT
 TEST string 2
+TEST string 3
