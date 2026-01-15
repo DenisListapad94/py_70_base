@@ -1,37 +1,41 @@
-
 # TUPLE
 #1.	Дан кортеж. Найти разность между его максимальным и минимальный элементом.
 digits_range = (2,4,99,7,8,3,44,14,39,1,3)
 print(max(digits_range) - min(digits_range))
 
-#2.Дан кортеж. Написать программу, определяющую сколько раз менялся знак в кортеже. (5,2,-2,7,-8,-9,1) 4 раза
-digits_range_2 = (5,2,-2,7,-8,-9,1)
-result = digits_range_2[0]
-for digit in digits_range_2:
-    if digit  :
-        result += 1
-print(result)
+#2.
+digits_range_2 = (5, 2, -2, 7, -8, -9, 1)
+count = 0
+for digit in range(len(digits_range_2) - 1):
+    if digits_range_2[digit] * digits_range_2[digit + 1] < 0:
+        count += 1
+print(count)
 
 #3. Дан кортеж. Вывести на экран все простые числа в данном кортеже.
-digits_range_3 = (2,4,99,7,8,3,44,14,39,1,3)
+digits_range_3 = (2, 4, 99, 7, 8, 3, 44, 14, 39, 1, 3)
 result = []
 for digit in digits_range_3:
-    if digit > 2 and digit % 2 == 0:
+    if digit <= 1:
         continue
-    else:
+    temp = True
+    for i in range(2, digit):
+        if digit % i == 0:
+            temp = False
+            break
+    if temp:
         result.append(digit)
 print(result)
 
 #5.	*Дан кортеж. Без функций и дополнительных списков вывести все повторяющиеся элементы. (count не использовать). (1,2,4,1,2,6) 1 2
-digits_range_5 = (1, 2, 4, 1, 2, 6)
+digits_range_5 = (1, 2, 4, 4, 1, 2, 6, 6, 6, 6)
 result_5 = []
 for digit in range(len(digits_range_5)):
     for item in range(digit + 1, len(digits_range_5)):
         if digits_range_5[digit] == digits_range_5[item]:
-            result_5.append(digits_range_5[item])
+            if digits_range_5[digit] not in result_5:
+                result_5.append(digits_range_5[digit])
             break
 print(result_5)
-
 
 #LIST
 #6.	Задано два списка. Найти наименьшие среди элементов первого списка, которые не входят во второй список.
@@ -51,21 +55,19 @@ else:
 digits_range_7 = [4,18,24,221,8,8]
 result = []
 for digit in digits_range_7:
-    result.append(str(digit))
-    result.append(str(digit)[::-1])
+    if digit % 2 == 0:
+        result.append(str(digit))
+        result.append(str(digit)[::-1])
+    else:
+        result.append(str(digit))
 print(' '.join(result))
 
 #8 Дан список . Вычислить сколько раз в нем встречается каждый элемент, не используя сортировки. [5,2,4,5,1,2] 1 – 1 2 – 2 4 – 1 5 - 2
 digits_range_8 = [5,2,4,5,1,2]
 result_list = []
 for digit in digits_range_8:
-    num = digit
-    count = 0
-
-    for value in digits_range_8:
-        if num == value:
-            count += 1
-    result_list.append(f'{num} - {count}')
+    count = digits_range_8.count(digit)
+    result_list.append(f'{digit} - {count}')
 print(set(result_list))
 
 #9.	 *Дан список . Перезаписать его так, чтобы сначала были все положительные числа, а затем все отрицательные и нули, сохраняя порядок их следования. [5,2,0,-2,-7,1,8,0,-1] -> [5,2,1,8,-2,-7,-1,0,0]
