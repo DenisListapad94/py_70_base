@@ -2,7 +2,6 @@
 try:
     x = (1, 2, 5, 7)
     x = x / 2
-    print(x)
 except TypeError:
     print("Невозможно разделить кортеж на число")
 
@@ -39,7 +38,6 @@ try:
 except TypeError:
     print('Такого элемента нет в списке')
 
-
 #5
 try:
     dict_list_shop = {'йогурт': '2р', 'каша': '3,5р', 'сыр': '4р' }
@@ -62,14 +60,13 @@ for item in str_to_list:
         continue
 print(sum_6)
 
-
 #7
+
 a = "aaa bb ss rra aa b"
 #a = 55
+
 try:
     str_to_list = list(a)
-    print(str_to_list)
-    symbol = str_to_list[0]
     temp = []
     for item in str_to_list:
         if item in temp or item == ' ':
@@ -81,27 +78,40 @@ try:
 except TypeError:
     print('Входные данные должны быть строковые')
 
-str_list = "aaa bb ss rra aa b"
-if not isinstance(a,str):
-    raise TypeError
 
-
-arr = [20,30,2,40,50,60,70,80,90,100,110]
-x = 110
-if arr != sorted(arr):
-    raise ValueError('Список не отсортирован')
 try:
-    if arr == sorted(arr):
-        for index in range(len(arr)):
-            middle = len(arr) // 2
-            print(arr[middle])
-            if x == arr[middle]:
-                print(f'find x - {x}')
-                break
-            elif x < arr[middle]:
-                del arr[middle:]
-            elif x > arr[middle]:
-                del arr[:middle + 1]
-except IndexError:
-    print(None)
+    dicti = {}
+    for item in a:
+        if item == ' ':
+            continue
+        if item in dicti:
+            dicti[item] += 1
+        else:
+            dicti[item] = 1
+    for key, val in dicti.items():
+       print(f'{key} - {val}')
+except TypeError:
+    print('Входные данные должны быть строковые')
+
+#8
+arr = [20,30,40,50,60,70,80,90,100,110]
+x = 20
+if arr != sorted(arr):
+    raise ValueError
+try:
+    left = 0
+    right = len(arr) - 1
+    while left <= right:
+        arr_midle = (left + right) // 2
+        mid = arr[arr_midle]
+        if mid == x:
+            print(f"Найден {mid} по индексу {arr_midle}")
+            break
+        elif x > mid:
+            left = arr_midle + 1
+        else:
+            right = arr_midle - 1
+    else:
+        print(None)
+except ValueError: print('Список не отсортирован')
 
