@@ -16,7 +16,7 @@
 # print(var_1 > var_2) # False
 # print(var_1 < var_2) # True
 # print(var_1 is var_2) # False
-
+import random
 
 # else if  elif
 # and и or или not  не
@@ -172,6 +172,161 @@
 #     print(value)
 # print(users["users"]["user_1"]["bank_account"][1]["alpha"])
 # JSON
-print("task_1")
+# 6. Дано число n. Вывести на экран числа 1, 4, 9, 16, 25, ...
+# которые меньше n.
+# Sample Input :
+# 15
+# Sample Output :
+# 1 4 9
+# number = 90
+# for i in range(1, int((number ** 0.5)  + 1)):
+#     if i ** 2 < number:
+#         print(i**2, end =" ")
+#
+# i = 1
+# print()
+# number = 90
+# while i ** 2 < number:
+#     print( i**2, end=" ")
+#     i+=1
 
-print("task_1")
+# s = "aaaabbcaacccuureeer"
+# s += " "
+# new_decoded_s = ""
+# counter = 1
+# for ind in range(len(s) - 1):
+#     if s[ind] == s[ind+1]:
+#         counter += 1
+#     else:
+#         new_decoded_s += s[ind] + str(counter)
+#         counter = 1
+# print(new_decoded_s)
+# class CustomExceptions(Exception):
+#     pass
+
+# def some_fun():
+#     try:
+#         numb_1 = 5
+#         numb_2 = {}
+#         print(numb_1 + numb_2)
+#     except Exception:
+#         print("Error")
+#         raise
+#         # raise ArithmeticError("XAXAXA")
+#
+#
+# try:
+#     some_fun()
+#
+# except ArithmeticError as exc:
+#     print("cod failed: ArithmeticError",exc.args)
+# except IndexError:
+#     print("cod failed: IndexError")
+# except TypeError:
+#     print("cod failed: TypeError")
+# except Exception as exc:
+#     print(type(exc),exc.args)
+# # else:
+# #     print("all good")
+# finally:
+#     print("always")
+
+# DRY
+# KISS keep it simple stupid
+# YAGNI
+# sum = 0
+# for i in range(10):
+#     print(i)
+#     sum += i
+# чистая функция
+# def print_stars(count):
+#     if count >= 50:
+#         return
+#     for i in range(count):
+#         print("*",end="")
+#     return "\nfunction complete"
+# print_stars(10)
+#
+# print()
+# print("hello world")
+#
+# print(print_stars("30"))
+
+# def some_example_args_function(attr_int1, attr_str2, *args,**kwargs):
+#     print(attr_int1 + 3)
+#     print(attr_str2  + " !")
+#     print(args)
+#     print(kwargs)
+#
+#
+# lst = [4,5,1,6,2]
+# some_str = "sdasda"
+# some_dict = {"a": 22, "b": 5}
+# some_example_args_function(30,"10",1,5,2,6,2,6,2,5,2,*lst,*some_str,54,val_1=2,val_2=4,**some_dict)
+# GLEB
+# GLOBAL область видимости модуля
+# LOCAL область видимости
+# ENCLOSING замыкающая область функции
+# # BUILDINS scope область встроенных функций
+# var_a = 12
+# var_b = "hello"
+#
+# def some_new_fun(counter: int, some_str: str) -> None:
+#     """
+#     :param counter: count of value
+#     :param some_str: some random string
+#     :return: some data
+#     show detail info about args
+#     """
+#     def inner_fun():
+#         nonlocal counter
+#         counter = 55
+#         var_inner = 22
+#         print(locals())
+#
+#     inner_fun()
+#     print(locals())
+#     # return counter, some_str
+#
+# #
+# result = some_new_fun(counter=10,some_str="hello")
+# # print(some_new_fun)
+#
+# print(var_a)
+# print(globals())
+
+# lambda args1,args2: ()f
+# def some_sum_fun(x1,x2):
+#     return x1 + x2
+# fun = lambda x_1, x_2: x_1 + x_2
+# fun2 = some_sum_fun
+# print(fun2(x1=4,x2=5))
+# print(fun(x_1=4,x_2=5))
+# lst = [50,2,52,60,2,50,21,2,120]
+# lst.sort(key = lambda x: x % 10 == 0)
+# print(lst)
+
+# lst = [5,2,1,8,5,7,2,4]
+# some_str = "dadqwd"
+# ЧТО МЫ ХОТИМ ПОМЕСТИТЬ FOR из ЧЕГО БЕРЁМ in Итерабельный объект
+# new_list = [el * 3 for el in lst]
+# ЧТО МЫ ХОТИМ ПОМЕСТИТЬ FOR из ЧЕГО БЕРЁМ in Итерабельный объект if условие верно
+# new_list = [el * 3 for el in lst if not el % 2 ]
+# ЧТО МЫ  ПОМЕСТИМ если условие верно иначе что поместим FOR из ЧЕГО БЕРЁМ in Итерабельный объект
+
+# def some_fun_1(el):
+#     return el * 3
+#
+# def some_fun_2(el):
+#     return el - 3
+#
+# new_list = {some_fun_1(el) if not el % 2  else some_fun_2(el) for el in lst}
+# print(new_list)
+# lst = [5,2,5,1,23,5,1]
+# new_dict = { lst[index]: lst[index]**2 if lst[index] not in lst[:index] for index in range(len(lst))}
+# print(new_dict)
+# size = 10
+#
+# matrix = [[random.randint(0,1) for _ in range(size)]  for _ in range(size)]
+# for row in matrix:
+#     print(row)
