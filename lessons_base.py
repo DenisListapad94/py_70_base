@@ -17,6 +17,9 @@
 # print(var_1 < var_2) # True
 # print(var_1 is var_2) # False
 import random
+from functools import reduce
+
+
 
 # else if  elif
 # and и or или not  не
@@ -266,7 +269,7 @@ import random
 # GLEB
 # GLOBAL область видимости модуля
 # LOCAL область видимости
-# ENCLOSING замыкающая область функции
+# ENCLOSING замыкающая область функцбюбии
 # # BUILDINS scope область встроенных функций
 # var_a = 12
 # var_b = "hello"
@@ -330,3 +333,135 @@ import random
 # matrix = [[random.randint(0,1) for _ in range(size)]  for _ in range(size)]
 # for row in matrix:
 #     print(row)
+#
+#
+# obj = tuple(int(elem) for elem in input().split() if elem.isdigit())
+
+# print(obj)
+
+# map filter reduce
+# obj = ["1","5","2","5","1",]
+# new_obj = list(map(lambda item: int(item) ** 2,obj))
+# print(new_obj)
+#
+# str_obj = ["fsaad dssss dsa dasd da","da das das www","gjfdgreg","","dadagaggaaaa ww wda",]
+# new_str_obj = list(map(lambda item: " ".join([elem for elem in item.split() if "a" not in elem]),str_obj))
+# print(new_str_obj)
+
+# filter
+# lst = [5,222,16,0,45,0,21]
+# new_obj = list(map(lambda item: item //3 ,(filter(lambda item: not (item % 3) and  item != 0,lst))))
+# print(new_obj)
+# lst_summa = []
+# def some_check(value):
+#     if value > 50:
+#         lst_summa.append(value)
+#         value = 0
+#     return value
+#
+# value =  reduce(lambda x, y: some_check(x) + y, [11, 25, 36, 4, 5,2,12,4,22,19,26,33,5])
+# print(lst_summa)
+
+# GLEB
+
+# def wrapper(x: int):
+#     def inner(y: int):
+#         nonlocal x
+#         x += 1
+#         return x+y
+#     return inner
+#
+#
+# closure = wrapper(1)
+# for i in range(10):
+#     print(closure(2))
+
+
+
+#
+# def decorator(fun: callable):
+#     def inner(*args,**kwargs):
+#         for i in range(100):
+#             print("*",end="")
+#         print()
+#         count = fun(*args,**kwargs)
+#         #
+#         # if count > 5:
+#         #     raise TypeError
+#         print(count)
+#         return count
+#
+#     return inner
+#
+# @decorator
+# def some_fun(*args,**kwargs):
+#     print("some fun")
+#     print(kwargs)
+#     return 1 + sum(args) + sum(kwargs.values())
+#
+# # some_fun = decorator(some_fun)
+# counter = some_fun(1)
+# counter = some_fun(counter,**{"key":2})
+# counter = some_fun(counter)
+# counter = some_fun(counter,**{"key":2,"key2":3})
+# counter = some_fun(counter)
+#
+# from typing import Any
+#
+#
+# lst = []
+# def decorator(fun):
+#     def inner(arg: Any):
+#         try:
+#             item = fun(arg)
+#             lst.append(item)
+#             return item
+#         except TypeError as e:
+#             print("TypeError args is ",*e.args)
+#
+#
+#     return inner
+#
+# def decorator_2(fun):
+#     def inner(arg: Any):
+#         item = fun(arg)
+#         print(item)
+#     return inner
+#
+#
+# @decorator_2
+# @decorator
+# def some_fun(arg: Any):
+#     if type(arg) == list:
+#         raise TypeError(arg)
+#     return arg
+#
+# some_fun(5)
+# some_fun("5")
+# some_fun(True)
+# some_fun([2])
+# print(lst)
+def super_wrapper(x: int):
+    def decorator(fun):
+        def inner(value):
+            nonlocal x
+            print("begin inner")
+            res  = fun(value)
+            print("end inner")
+            x += res
+            print("x:",x)
+            return res  +  x
+        return inner
+    return decorator
+
+# @super_wrapper(42)
+def some_fun(value):
+    return value + 3
+
+
+some_fun = super_wrapper(42)(some_fun)
+some_fun(1)
+some_fun(1)
+some_fun(1)
+some_fun(1)
+some_fun(1)
