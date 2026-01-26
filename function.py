@@ -77,8 +77,7 @@ def count_unic(arr: list) -> int:
 print(count_unic(arr))
 
 
-#9Дан список, упорядоченный по не убыванию элементов в нем.
-# Напишите функцию которая определяет количество в нем различных элементов. set функцию не использовать.
+#9
 list_nums = '1 3 5 6 10'
 def sum_neibor(list_nums: list) ->list:
     arr_nums = list_nums.split(' ')
@@ -98,7 +97,9 @@ def sum_neibor(list_nums: list) ->list:
     return ' '.join(map(str,new_arr))
 
 print(sum_neibor(list_nums))
-#10
+
+
+#10.	Дан список, состоящий из строк. Отсортировать его по длине слов. Сначала должны идти длинные слова затем короткие.
 arr = ['', 'aaa', 'a', 'bbbcs', '0av', 'ff', 'etstetetesfdsf']
 def findHight(arr: list) -> int:
     hight = len(arr[0])
@@ -109,12 +110,33 @@ def findHight(arr: list) -> int:
             hight_index = item
     return hight_index
 
-
 def selection(arr: list) -> list:
     newArr = []
-    for item in range(len(arr)):
+    for item in range(1, len(arr)):
         findHightest = findHight(arr)
         newArr.append(arr.pop(findHightest))
     return newArr
 
 print(selection(arr))
+
+#11.	Дан список состоящий из слов. Отсортировать его по количеству вхождений буквы 'a'
+words = ['aabc', 'abcabba', 'a', 'baba']
+
+def find_count_min(arr):
+    min_count = arr[0].count('a')
+    min_count_index = 0
+    for item in range(1, len(arr)):
+        if arr[item].count('a') < min_count:
+            min_count = arr[item].count('a')
+            min_count_index = item
+    return min_count_index
+
+def selection(arr):
+    new_arr = []
+    for item in range(len(arr)):
+        min_count = find_count_min(arr)
+        new_arr.append(words.pop(min_count))
+    return new_arr
+
+
+print(selection(words))
