@@ -17,6 +17,7 @@
 # print(var_1 < var_2) # True
 # print(var_1 is var_2) # False
 import random
+import time
 from functools import reduce
 
 
@@ -441,27 +442,122 @@ from functools import reduce
 # some_fun(True)
 # some_fun([2])
 # print(lst)
-def super_wrapper(x: int):
-    def decorator(fun):
-        def inner(value):
-            nonlocal x
-            print("begin inner")
-            res  = fun(value)
-            print("end inner")
-            x += res
-            print("x:",x)
-            return res  +  x
-        return inner
-    return decorator
+# def super_wrapper(x: int):
+#     def decorator(fun):
+#         def inner(value):
+#             nonlocal x
+#             print("begin inner")
+#             res  = fun(value)
+#             print("end inner")
+#             x += res
+#             print("x:",x)
+#             return res  +  x
+#         return inner
+#     return decorator
+#
+# # @super_wrapper(42)
+# def some_fun(value):
+#     return value + 3
+#
+#
+# some_fun = super_wrapper(42)(some_fun)
+# some_fun(1)
+# some_fun(1)
+# some_fun(1)
+# some_fun(1)
+# some_fun(1)
 
-# @super_wrapper(42)
-def some_fun(value):
-    return value + 3
+
+class Person(object):
+    DEFAULT_HIGH = 1.75 # атрибут класса
+    #
+    # def __new__(cls, *args, **kwargs):
+    #     print("new obj")
+    #     return super().__new__(cls)
+
+    def __init__(self, name: str, age: int, high: float = DEFAULT_HIGH):
+        self.name = name # public
+        self._high = high # protected
+        self.__age = age  # private
 
 
-some_fun = super_wrapper(42)(some_fun)
-some_fun(1)
-some_fun(1)
-some_fun(1)
-some_fun(1)
-some_fun(1)
+    def set_name(self, name: str) -> None: # метод экземпяра класса
+        self.name = name  # атрибут экземляра класса
+
+
+    def set_high(self, high: float) -> None:
+        self._high = high
+
+
+
+    @property
+    def old(self) -> int:
+        return self.__age
+
+    @old.setter
+    def old(self, age: int) -> None:
+        self.__age = age
+
+    @old.deleter
+    def old(self) -> None:
+        del self.__age
+
+    # old = property(get_age,set_age,del_age)
+
+    def info(self):
+        print(f"person name: {self.name} age: {self.__age} high: {self._high}")
+
+    def go_to_city(self, city):
+        print(f"{self.name} go to {city}")
+
+    def __call__(self):
+        return self.__age * 12
+
+    def __str__(self):
+        return  f"name: {self.name}"
+
+    # def __del__(self):
+    #     print("del obj")
+    #     del self
+
+# print(Person().DEFAULT_HIGH)
+person_1 = Person(name="Ivan",age=18)
+# person_1._Person__age = 23
+# print(person_1._Person__age)
+# print(person_1.old)
+# print(person_1.__dict__)
+# person_1.info()
+# person_1.old = 10
+# print(person_1.old)
+# del person_1.old
+# person_1.set_age(24)
+# person_1.info()
+# person_1.del_age()
+# person_1.set_age(27)
+# person_1.info()
+# print(Person.__dict__)
+# person_2 = Person(name="Kolya",age=23,high=1.87)
+# # person_1.set_name("Ivan")
+# # person_2.set_name("Kolya")
+# # person_1.set_high(1.71)
+# # person_2.set_high(1.87)
+# person_2.info()
+# person_2.age = 24
+#
+# person_1.info()
+# person_2.info()
+# person_2.go_to_city("Gomel")
+# print(person_1)
+#
+# person_1.info()
+#
+#
+# for i in range(10):
+#     person_1.info()
+#     time.sleep(1)
+#     if i==5:
+#         del person_1
+# Person.say_name(person_1,"Philip")
+# var = 10
+# print(type(var).__bases__)
+# print(TypeError.__bases__[0].__bases__[0].__bases__[0])
