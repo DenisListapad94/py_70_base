@@ -55,6 +55,24 @@ def closest_mod_5(n: int) -> int:
 
 print(closest_mod_5(num))
 
+#5
+def check_variable(string):
+    if not string or string[0].isdigit():
+        return False
+    for char in string:
+        if not (char == '_' or char.isalnum()):
+            return False
+    return True
+
+while True:
+    string = input()
+    if string == "Поработали и хватит":
+        break
+    if check_variable(string):
+        print('Можно использовать')
+    else:
+        print('Нельзя использовать')
+
 #6
 list_nums = [num for num in range(1, 100) if not num % 2 == 0]
 print(list_nums)
@@ -117,12 +135,12 @@ def selection(arr: list) -> list:
         newArr.append(arr.pop(findHightest))
     return newArr
 
-print(selection(arr))
+print(selection(arr)) #O(n2)
 
 #11.	Дан список состоящий из слов. Отсортировать его по количеству вхождений буквы 'a'
 words = ['aabc', 'abcabba', 'a', 'baba']
 
-def find_count_min(arr):
+def find_count_min(arr:list) -> int:
     min_count = arr[0].count('a')
     min_count_index = 0
     for item in range(1, len(arr)):
@@ -131,12 +149,28 @@ def find_count_min(arr):
             min_count_index = item
     return min_count_index
 
-def selection(arr):
+def selection(arr: list) -> list:
     new_arr = []
     for item in range(len(arr)):
         min_count = find_count_min(arr)
-        new_arr.append(words.pop(min_count))
+        new_arr.append(arr.pop(min_count))
     return new_arr
 
 
-print(selection(words))
+print(selection(words)) #O(n2)
+
+
+# 13
+n = 10
+
+def fun(n:int) -> list:
+    arr = [1]
+    for item in range(1,n + 1):
+        if item > 1:
+            for _ in range(item):
+                if len(arr) == n:
+                    break
+                else:
+                    arr.append(item)
+    print(''.join(map(str,arr)))
+fun(n)
