@@ -21,7 +21,6 @@ import time
 from functools import reduce
 
 
-
 # else if  elif
 # and и or или not  не
 # var_1 =  13
@@ -378,7 +377,6 @@ from functools import reduce
 #     print(closure(2))
 
 
-
 #
 # def decorator(fun: callable):
 #     def inner(*args,**kwargs):
@@ -468,60 +466,59 @@ from functools import reduce
 # some_fun(1)
 
 
-class Person(object):
-    DEFAULT_HIGH = 1.75 # атрибут класса
-    #
-    # def __new__(cls, *args, **kwargs):
-    #     print("new obj")
-    #     return super().__new__(cls)
+# class Person(object):
+#     DEFAULT_HIGH = 1.75 # атрибут класса
+#
+# def __new__(cls, *args, **kwargs):
+#     print("new obj")
+#     return super().__new__(cls)
+#
+# def __init__(self, name: str, age: int, high: float = DEFAULT_HIGH):
+#     self.name = name # public
+#     self._high = high # protected
+#     self.__age = age  # private
+#
+#
+# def set_name(self, name: str) -> None: # метод экземпяра класса
+#     self.name = name  # атрибут экземляра класса
+#
+#
+# def set_high(self, high: float) -> None:
+#     self._high = high
 
-    def __init__(self, name: str, age: int, high: float = DEFAULT_HIGH):
-        self.name = name # public
-        self._high = high # protected
-        self.__age = age  # private
 
+# @property
+# def old(self) -> int:
+#     return self.__age
+#
+# @old.setter
+# def old(self, age: int) -> None:
+#     self.__age = age
+#
+# @old.deleter
+# def old(self) -> None:
+#     del self.__age
 
-    def set_name(self, name: str) -> None: # метод экземпяра класса
-        self.name = name  # атрибут экземляра класса
+# old = property(get_age,set_age,del_age)
 
+# def info(self):
+#     print(f"person name: {self.name} age: {self.__age} high: {self._high}")
+#
+# def go_to_city(self, city):
+#     print(f"{self.name} go to {city}")
+#
+# def __call__(self):
+#     return self.__age * 12
+#
+# def __str__(self):
+#     return  f"name: {self.name}"
 
-    def set_high(self, high: float) -> None:
-        self._high = high
-
-
-
-    @property
-    def old(self) -> int:
-        return self.__age
-
-    @old.setter
-    def old(self, age: int) -> None:
-        self.__age = age
-
-    @old.deleter
-    def old(self) -> None:
-        del self.__age
-
-    # old = property(get_age,set_age,del_age)
-
-    def info(self):
-        print(f"person name: {self.name} age: {self.__age} high: {self._high}")
-
-    def go_to_city(self, city):
-        print(f"{self.name} go to {city}")
-
-    def __call__(self):
-        return self.__age * 12
-
-    def __str__(self):
-        return  f"name: {self.name}"
-
-    # def __del__(self):
-    #     print("del obj")
-    #     del self
+# def __del__(self):
+#     print("del obj")
+#     del self
 
 # print(Person().DEFAULT_HIGH)
-person_1 = Person(name="Ivan",age=18)
+# person_1 = Person(name="Ivan",age=18)
 # person_1._Person__age = 23
 # print(person_1._Person__age)
 # print(person_1.old)
@@ -561,3 +558,235 @@ person_1 = Person(name="Ivan",age=18)
 # var = 10
 # print(type(var).__bases__)
 # print(TypeError.__bases__[0].__bases__[0].__bases__[0])
+#
+# from abc import ABC, abstractmethod
+#
+# class Weapon(ABC):
+#     @abstractmethod
+#     def use(self):
+#         pass
+#
+# class Gun(Weapon):
+#     color = "black"
+#     def use(self):
+#         print("bax")
+#
+# class Automat(Gun):
+#     def use(self,shoot_mode  = None):
+#         print("bax bax bax") if not shoot_mode else super().use()
+#
+# class Knife(Weapon):
+#     def use(self):
+#         print("wjooooox")
+
+# weapon = Weapon()
+#
+# tokarev = Gun()
+# ak_74 = Automat()
+# knife = Knife()
+#
+# tokarev.use()
+
+# ak_74.use()
+
+
+# knife.use()
+
+# class Player:
+#     def take_weapon(self,weapon:Weapon):
+#         weapon.use()
+#
+# player_1 = Player()
+# player_1.take_weapon(knife)
+# print(ak_74.color)
+
+#
+# class Manufacture:
+#     def use(self):
+#         print("use manufacture logic")
+#
+#     def construct(self):
+#         print("some construct")
+#
+# class Vehicle(Manufacture):
+#     pass
+# def use(self):
+#     print("use vehicle")
+
+# class Engine(Manufacture):
+#     def use(self):
+#         print("use engine")
+#
+# class Car(Vehicle,Engine):
+#     pass
+# def use(self):
+#     print("use car")
+
+# C V E M O
+# car = Car()
+# car.use()
+# print(Car.mro())
+
+# MRO2 Diamond Problem
+# MRO3 C3 Linerization Python3 Object
+
+
+# class ExampleMethodsClass:
+#     def __init__(self,attr = None):
+#         self.attr = attr
+#
+#     def some_object_method(self): # метод экземпляра класса
+#         print(f"I am object method and have attr: {self.attr}")
+#         self.some_static_method()
+#
+#     @staticmethod
+#     def some_static_method(): # cтатический метод
+#         print("Some static method")
+#
+#     @classmethod
+#     def  some_class_method(cls, attr = None, policy: str = "admin"):
+# print("This is class method")
+
+# cls.some_static_method()
+# if attr:
+#     return cls(attr)
+
+#
+# obj_new = ExampleMethodsClass.some_class_method()
+#
+# if obj_new:
+#     obj_new.some_object_method()
+# obj_new.some_object_method()
+# object_1 = ExampleMethodsClass(10)
+# object_1.some_object_method()
+# ExampleMethodsClass.some_static_method()
+
+
+# Миксин Mixin
+# class CalculateMixin:
+#     @property
+#     def formula(self):
+#         return 100
+#
+#
+# class EnergyCalculate(CalculateMixin):
+#     def calculate(self, days: int) -> float:
+#         return self.formula * days
+#
+#
+# class WaterCalculate(CalculateMixin):
+#     def calculate(self, days: int) -> float:
+#         return self.formula * days / 12
+#
+# energy = EnergyCalculate()
+# print(energy.calculate(10))
+#
+# water = WaterCalculate()
+# print(water.calculate(10))
+
+#
+# user = User("user_1",12)
+#
+# print(user.name)
+# print(user.age)
+# print(user)
+
+# table users
+# id user age
+# 1  Ivan 23
+
+#
+from dataclasses import dataclass
+#
+# @dataclass
+# class User:
+#     id: int
+#     name: str
+#     age: int
+#     bill: int
+#     def __str__(self):
+#         return f"user: {self.name}"
+#
+#
+# user_data = {"id":1,"name":"Ivan","age":23,"bill": 24}#"""select from user where id = 1 """
+#
+# user = User(**user_data)
+# user.bill -= 20
+# print(user.bill)
+# """update user set bill=user.bill where id = user.id """
+#
+# class CalculateBill:
+#     def calculate(self,bill:int,user:User):
+#         user.bill -= bill
+#         return user
+
+# lst = [1,2,4,5]
+#
+# gen = (i for i in range(10))
+# print(gen)
+# for el in gen:
+#     print(el)
+
+
+# class Iterator:
+#     def __init__(self, count=10):
+#         self.count = count
+#
+#     def __iter__(self):
+#         return self
+#
+#     def __next__(self):
+#         self.count -= 1
+#         if self.count > 0:
+#             return self.count
+#         raise StopIteration
+#
+# iterator = Iterator()
+# for it in iterator:
+#     print(it)
+
+
+# lst = [i for i in range(1,10)]
+# new_map = map(lambda x: x**2, lst)
+# print(list(new_map))
+# for el in new_map:
+#     print(el)
+
+# генеративная функция!!!
+
+
+# def generator_function(counter: int):
+#     print("before yielding...")
+#     summa = 0
+#     for elem in range(counter):
+#         x = yield elem
+#         summa += x if type(x) == int else 0
+#     print(f"summa: {summa}")
+#
+#
+# def generator_function_2(elem):
+#     print(elem)
+#     yield elem ** 2
+#
+# gen = generator_function(100)
+#
+# while True:
+#     data = next(generator_function_2(next(gen)))
+#     gen.send(data)
+
+def some_generator():
+    print(1)
+    yield
+    print(2)
+    yield
+    print(3)
+    yield
+    print(4)
+    yield
+    print(5)
+    yield
+    print(6)
+    yield
+
+
+
