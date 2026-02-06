@@ -720,4 +720,73 @@ from dataclasses import dataclass
 #         user.bill -= bill
 #         return user
 
-from abc import ABC
+# lst = [1,2,4,5]
+#
+# gen = (i for i in range(10))
+# print(gen)
+# for el in gen:
+#     print(el)
+
+
+# class Iterator:
+#     def __init__(self, count=10):
+#         self.count = count
+#
+#     def __iter__(self):
+#         return self
+#
+#     def __next__(self):
+#         self.count -= 1
+#         if self.count > 0:
+#             return self.count
+#         raise StopIteration
+#
+# iterator = Iterator()
+# for it in iterator:
+#     print(it)
+
+
+# lst = [i for i in range(1,10)]
+# new_map = map(lambda x: x**2, lst)
+# print(list(new_map))
+# for el in new_map:
+#     print(el)
+
+# генеративная функция!!!
+
+
+# def generator_function(counter: int):
+#     print("before yielding...")
+#     summa = 0
+#     for elem in range(counter):
+#         x = yield elem
+#         summa += x if type(x) == int else 0
+#     print(f"summa: {summa}")
+#
+#
+# def generator_function_2(elem):
+#     print(elem)
+#     yield elem ** 2
+#
+# gen = generator_function(100)
+#
+# while True:
+#     data = next(generator_function_2(next(gen)))
+#     gen.send(data)
+
+def some_generator():
+    print(1)
+    yield
+    print(2)
+    yield
+    print(3)
+    yield
+    print(4)
+    yield
+    print(5)
+    yield
+    print(6)
+    yield
+
+
+
