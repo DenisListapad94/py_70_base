@@ -774,19 +774,103 @@ from dataclasses import dataclass
 #     data = next(generator_function_2(next(gen)))
 #     gen.send(data)
 
-def some_generator():
-    print(1)
-    yield
-    print(2)
-    yield
-    print(3)
-    yield
-    print(4)
-    yield
-    print(5)
-    yield
-    print(6)
-    yield
+# def some_generator():
+#     print(1)
+#     yield
+#     print(2)
+#     yield
+#     print(3)
+#     yield
+#     print(4)
+#     yield
+#     print(5)
+#     yield
+#     print(6)
+#     yield
 
+import os
+from pathlib import Path
+# name_dir = "test2"
 
+# print(os.getcwd())
+# path = "C:\\Users\Denis\PycharmProjects\py70_base"
+#
+# os.rmdir(path)
+#
+# is_exist  = os.path.exists(path)
+# if not is_exist:
+#     os.mkdir(name_dir)
 
+# print(os.listdir("test"))
+# file = open(
+#     file="test/test.txt",
+#     mode="a",
+#     encoding="Utf-8"
+# )
+# path = "test/test.txt"
+# mode = "w"
+# encoding = "Utf-8"
+# with open(
+#     file=path,
+#     mode=mode,
+#     encoding=encoding
+# ) as file:
+#     lst_str = ["dsada","dsda","dsadsa"]
+#     for line in lst_str:
+#         file.write(line + "\n")
+# lst = []
+# names = {}
+# for line in file:
+#     name, age = line.strip().split()
+#     names[name] = int(age)
+# print(names)
+# json
+import json
+path = "test/parker_info.json"
+mode = "w"
+# with open(file=path,mode=mode,encoding='Utf-8') as file:
+#     data = json.load(file)
+#     print(data["phoneNumbers"])
+# data = {
+#     "firstName": "Peter",
+#     "lastName": "Parker",
+#     "gender": "male",
+#     "age": 20,
+#     "address": {
+#         "streetAddress": "101",
+#         "city": "NY",
+#         "state": "NY"
+#     },
+#     "phoneNumbers": [
+#         {
+#             "type": "home",
+#             "number": "7349282382"
+#         },
+#     ]
+# }
+# with open(file=path,mode=mode,encoding='Utf-8') as file:
+#     json.dump(data,file,indent=4)
+
+# path = "test/test_csv.csv"
+# mode = "r"
+#
+# import csv
+# data = [
+#     [2,2,4,1,5,1,25,24,2],
+#     [2,2,4,1,5,1,25,24,2],
+#     [2,2,4,1,5,1,25,24,2]
+# ]
+# with open(path,mode=mode) as file:
+#     for line in data:
+#         file.write(",".join(line) + "\n")
+    # csv_writer = csv.writer(file)
+    # for row in data:
+    #     csv_writer.writerow(row)
+
+# from csv import reader as csv_reader
+# with open(path,mode=mode) as file:
+#     data = csv_reader(file,delimiter=";")
+#     lst = []
+#     for item in data:
+#         lst.extend(map(int,item))
+# print(lst)

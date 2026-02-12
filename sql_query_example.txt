@@ -1,0 +1,65 @@
+-- CREATE TABLE IF NOT EXISTS "actors"
+-- (
+-- id INTEGER PRIMARY KEY AUTOINCREMENT,
+-- name TEXT NOT NULL,
+-- age INTEGER,
+-- sex TEXT CHECK(sex = "male" or sex = "female"),
+-- country TEXT
+-- )
+--
+-- INSERT INTO actors (name, last_name, age, sex, country) VALUES
+-- (
+-- ('Том', 'Хэнкс', 67, 'male', 'USA'),
+-- , 'Стрип', 74, 'female', 'USA'),
+-- н', 'Делон', 88, 'male', 'France'),
+-- ', 'Лорен', 89, 'female', 'Italy'),
+-- ну', 'Ривз', 59, 'male', 'Canada'),
+-- ль', 'Кидман', 56, 'female', 'Australia'),
+-- 'Ватанабе', 64, 'male', 'Japan'),
+-- па', 'Крус', 49, 'female', 'Spain'),
+-- ла', 'Козловский', 38, 'male', 'Russia'),
+-- ресильд', 39, 'female', 'Russia'),
+-- рдо', 'ДиКаприо', 49, 'male', 'USA'),
+-- ланшетт', 54, 'female', 'Australia'),
+-- н', 'Феникс', 49, 'male', 'USA'),
+-- н', 'Котийяр', 48, 'female', 'France'),
+--  'Ли', 58, 'female', 'China'),
+-- Антонио', 'Бандерас', 63, 'male', 'Spain'),
+-- нго', 40, 'female', 'Kenya'),
+-- адс', 'Миккельсен', 58, 'male', 'Denmark'),
+-- бин', 42, 'female', 'China'),
+-- ью', 'Джекман', 55, 'male', 'Australia')
+--
+--
+-- UPDATE  actors
+-- SET age = 60
+-- WHERE id =1
+
+-- DELETE FROM actors
+-- where id = 1
+--
+
+
+
+--
+-- SELECT name as "имя", last_name as "фамилия" ,age, country
+-- s
+-- WHERE name like "%к%" or age > 40
+-- RDER BY country ASC, age DESC
+
+
+-- SELECT country, count(*) as "количество"
+-- s
+-- WHERE age > 55
+-- GROUP BY (country)
+-- HAVING "количество"  > 2
+-- количество" DESC
+--
+
+SELECT name, last_name,age
+from actors
+where age > (
+	SELECT AVG(age)
+	FROM actors
+)
+ORDER BY age DESC
