@@ -1,0 +1,17 @@
+{
+    "firstName": "Peter",
+    "lastName": "Parker",
+    "gender": "male",
+    "age": 20,
+    "address": {
+        "streetAddress": "101",
+        "city": "NY",
+        "state": "NY"
+    },
+    "phoneNumbers": [
+        {
+            "type": "home",
+            "number": "7349282382"
+        }
+    ]
+}
